@@ -1,11 +1,11 @@
 #!/usr/bin/python
 """
-	Recodea given PED/MAP plink file for infocalc.
+	Recode a given PED/MAP plink file into a format suitable for infocalc.
 	
 	Usage:
 	$0 plink_root output_prefix
 
-	Written in Jan. 2015
+	Note: Written and used in 2015 with existing versions of  infocalc.
 """
 
 import sys
@@ -13,7 +13,8 @@ import re
 
 
 def usage():
-    print "Usage: "
+    print __doc__
+    sys.exit(255)
 
 # Generator versinos of split - to avoid memory overheads
 #sep = re.compile(r"[A-Za-z']+")
