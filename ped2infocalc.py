@@ -1,8 +1,19 @@
 #!/usr/bin/python
+"""
+	Recodea given PED/MAP plink file for infocalc.
+	
+	Usage:
+	$0 plink_root output_prefix
+
+	Written in Jan. 2015
+"""
+
 import sys
 import re
 
 
+def usage():
+    print "Usage: "
 
 # Generator versinos of split - to avoid memory overheads
 #sep = re.compile(r"[A-Za-z']+")
@@ -31,10 +42,11 @@ def main():
 	ped_file = ped_base + ".ped"
 	out_meta = out_base + ".meta"
 	out_geno = out_base + ".stru.1"
-	with open(map_file) as f:
-		try:
+	try:
+		with open(map_file) as f:
 			snp_id = [ x[1] for x in [ y.split("\t") for y in f.readlines() ] ]
-		except IndexError:
+	except IndexError:
+		with open(map_file) as f:
 			snp_id = [ x[1] for x in [ y.split(" ") for y in f.readlines() ] ]
 	#for i in xrange(6):
 	#	sys.stderr.write( snp_id[i] + "\n" )
